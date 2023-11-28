@@ -1,0 +1,36 @@
+[33mcommit 8c66c796d68a7590ee93842cca7db8a6bbca3108[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: fernandofbamzn <fernandofbamzn@gmail.com>
+Date:   Mon May 8 13:09:37 2023 +0200
+
+    Quitados los avisos de debug
+
+[33mcommit 2b1be959f1d606835fcf40d56c01b9b404543e4c[m
+Author: fernandofbamzn <fernandofbamzn@gmail.com>
+Date:   Fri Apr 28 09:18:11 2023 +0200
+
+    actualiazada
+
+[33mcommit c6ceb7b87a1c809ae100f5305f7bcf35d6e39af5[m
+Author: fernandofbamzn <fernandofbamzn@gmail.com>
+Date:   Fri Apr 28 09:16:29 2023 +0200
+
+    Subida la pagina principal corregida.
+
+[33mcommit ef2954803024f6972e38bda7af9c850fb8cb516c[m
+Merge: 426f8dd a2df34c
+Author: fernandofbamzn <fernandofbamzn@gmail.com>
+Date:   Thu Apr 27 14:25:20 2023 +0200
+
+    Merge branch 'master'
+
+[33mcommit a2df34c3204c951235bb13a4aa34398283d02d8f[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: fernandofbamzn <fernandofbamzn@gmail.com>
+Date:   Thu Apr 27 14:19:37 2023 +0200
+
+    Version 1.0
+
+[33mcommit 426f8ddb210531003ba7c75fbd39192a52303600[m
+Author: Fernando <fernandofbamzn@gmail.com>
+Date:   Thu Apr 27 13:34:29 2023 +0200
+
+    Initial commit

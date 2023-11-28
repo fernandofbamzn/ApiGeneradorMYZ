@@ -1,0 +1,214 @@
+[
+  {
+    "category": "Autenticación",
+    "endpoints": [
+      {
+        "name": "authenticate",
+        "method": "POST",
+        "url": "{{url}}?controlador=autentificar",
+        "body": "{\r\n    \"username\": \"miUsuario\",\r\n    \"password\": \"0000\"\r\n}\r\n"
+      }
+    ]
+  },
+  {
+    "category": "Usuarios",
+    "endpoints": [
+      {
+        "name": "GetUsuarios",
+        "method": "GET",
+        "url": "{{url}}?controlador=usuario&metodo=getAll"
+      },
+      {
+        "name": "GetUsuario",
+        "method": "GET",
+        "url": "{{url}}?controlador=usuario&metodo=get&id=3",
+        "desc":"Recupera un usuario. En lugar de 'id' podemos pasar el parametro 'user' y buscará por ese campo."
+      },
+      {
+        "name": "crearUsuario",
+        "method": "POST",
+        "url": "{{url}}?controlador=usuario&metodo=crear",
+        "body": "{\r\n    \"usuario\": \"miUsuario\",\r\n    \"contrasena\": \"0000\",\r\n    \"nombre\": \"Fulano\",\r\n    \"apellido\": \"DeTal\",\r\n    \"rol\": \"lectura\"\r\n}\r\n"
+      },
+      {
+        "name": "editarUsuario",
+        "method": "PUT",
+        "url": "{{url}}?controlador=usuario&metodo=editar",
+        "body": "{\r\n    \"id\":2,\r\n    \"usuario\": \"miUsuarioMod\",\r\n    \"nombre\": \"FulanoMod\",\r\n    \"apellido\": \"de tal\",\r\n    \"rol\": \"lectura\"\r\n}"
+      },
+      {
+        "name": "cambiarContrasena",
+        "method": "PUT",
+        "url": "{{url}}?controlador=usuario&metodo=cambiarContrasena",
+        "body": "{\r\n    \"id\": 2,\r\n    \"nueva_contrasena\": \"12345\"\r\n}"
+      },
+      {
+        "name": "eliminarUsuario",
+        "method": "DELETE",
+        "url": "{{url}}?controlador=usuario&metodo=eliminar",
+        "body": "{\r\n    \"id\": 2\r\n}"
+      }
+    ]
+  },
+  {
+    "category": "Archivos",
+    "endpoints": [
+      {
+        "name": "GetArchivos",
+        "method": "GET",
+        "url": "{{url}}?controlador=archivos&metodo=getAll"
+      },
+      {
+        "name": "Buscar",
+        "method": "GET",
+        "url": "{{url}}?controlador=archivos&metodo=buscar&busqueda=imp",
+        "desc":"Busca un fichero por cualquiera de sus campos: Ruta, Nombre, Ruta Imagen, Nombre o valor del metadato."
+      },
+      {
+        "name": "GetArchivo",
+        "method": "GET",
+        "url": "{{url}}?controlador=archivos&metodo=get&id=1"
+      },
+      {
+        "name": "crearArchivo",
+        "method": "POST",
+        "url": "{{url}}?controlador=archivos&metodo=crear",
+        "body": "{\r\n    \"nombre\": \"trooper\",\r\n    \"extension\": \"stl\",\r\n    \"ruta_fichero\": \"starwars/imperio/basico/trooper.stl\"    \r\n}\r\n"
+      },
+      {
+        "name": "editarArchivo",
+        "method": "PUT",
+        "url": "{{url}}?controlador=archivos&metodo=editar",
+        "body": "{\r\n    \"id\":1,\r\n    \"nombre\": \"trooper\",\r\n    \"extension\": \"stl\",\r\n    \"ruta_fichero\": \"starwars/imperio/basico/troopermod.stl\"\r\n}"
+      },
+      {
+        "name": "eliminarArchivo",
+        "method": "DELETE",
+        "url": "{{url}}?controlador=archivos&metodo=eliminar",
+        "body": "{\r\n    \"id\": 1\r\n}"
+      },
+      {
+        "name": "Huerfanos",
+        "method": "GET",
+        "url": "{{url}}?controlador=archivos&metodo=huerfanos",
+        "desc":"Busca registros que no tengan su contraparte en un fichero del directorio, y elimina esos registros."
+      },
+      {
+        "name": "Sincronizar",
+        "method": "GET",
+        "url": "{{url}}?controlador=archivos&metodo=sincronizar",
+        "desc":"Busca ficheros que no esten en la BD y los registra, intentando completar tanto el archivo, como los metadatos y la imagen."
+      }
+    ]
+  },
+  {
+    "category": "Imagenes",
+    "endpoints": [
+      {
+        "name": "GetImagenes",
+        "method": "GET",
+        "url": "{{url}}?controlador=imagenes&metodo=getAll"
+      },
+      {
+        "name": "GetImagen",
+        "method": "GET",
+        "url": "{{url}}?controlador=imagenes&metodo=get&id=1"
+      },
+      {
+        "name": "crearImagen",
+        "method": "POST",
+        "url": "{{url}}?controlador=imagenes&metodo=crear",
+        "body": "{\r\n  \"archivo_id\": 1,\r\n  \"ruta_imagen\": \"ruta/de/la/imagen.jpg\"\r\n}\r\n\r\n"
+      },
+      {
+        "name": "editarImagen",
+        "method": "PUT",
+        "url": "{{url}}?controlador=imagenes&metodo=editar",
+        "body": "{\r\n  \"id\": 1,\r\n  \"archivo_id\": 1,\r\n  \"ruta_imagen\": \"starwars/imperio/basico/trooperbasico.jpg\"\r\n}\r\n"
+      },
+      {
+        "name": "eliminarImagen",
+        "method": "DELETE",
+        "url": "{{url}}?controlador=imagenes&metodo=eliminar",
+        "body": "{\r\n    \"id\": 2\r\n}"
+      },
+      {
+        "name": "Huerfanos",
+        "method": "GET",
+        "url": "{{url}}?controlador=imagenes&metodo=huerfanos",
+        "desc":"Busca registros que no tengan su contraparte en un fichero del directorio, y elimina esos registros."
+      }
+    ]
+  },
+  {
+    "category": "Metadatos",
+    "endpoints": [
+      {
+        "name": "GetMetadatos",
+        "method": "GET",
+        "url": "{{url}}?controlador=metadatos&metodo=getAll"
+      },
+      {
+        "name": "GetMetadato",
+        "method": "GET",
+        "url": "{{url}}?controlador=metadatos&metodo=get&id=1"
+      },
+      {
+        "name": "crearMetadatos",
+        "method": "POST",
+        "url": "{{url}}?controlador=metadatos&metodo=crear",
+        "body": "{\r\n  \"nombre_metadato\": \"ejemplo_metadato\",\r\n  \"descripcion\": \"Este es un ejemplo de metadato\"\r\n}"
+      },
+      {
+        "name": "editarMetadatos",
+        "method": "PUT",
+        "url": "{{url}}?controlador=metadatos&metodo=editar",
+        "body": "{\r\n  \"id\": 1,\r\n  \"nombre_metadato\": \"Faccion\",\r\n  \"descripcion\": \"Ejercito al que pertenece\"\r\n}\r\n"
+      },
+      {
+        "name": "eliminarMetadatos",
+        "method": "DELETE",
+        "url": "{{url}}?controlador=metadatos&metodo=eliminar",
+        "body": "{\r\n    \"id\": 2\r\n}"
+      }
+    ]
+  },
+  {
+    "category": "StlMeta",
+    "endpoints": [
+      {
+        "name": "GetAllStlMeta",
+        "method": "GET",
+        "url": "{{url}}?controlador=stlMeta&metodo=getAll"
+      },
+      {
+        "name": "GetStlMeta",
+        "method": "GET",
+        "url": "{{url}}?controlador=stlMeta&metodo=get&id=1"
+      },
+      {
+        "name": "GetAllStlMetaForStl",
+        "method": "GET",
+        "url": "{{url}}?controlador=stlMeta&metodo=getAllForStl&stl_id=1"
+      },
+      {
+        "name": "crearStlMeta",
+        "method": "POST",
+        "url": "{{url}}?controlador=stlMeta&metodo=crear",
+        "body": "{\r\n    \"stl_id\": 4,\r\n    \"metadato_id\": 1,\r\n    \"valor\": \"Valor del metadato\"\r\n}"
+      },
+      {
+        "name": "editarStlMeta",
+        "method": "PUT",
+        "url": "{{url}}?controlador=stlMeta&metodo=editar",
+        "body": "{\r\n    \"id\": 1,\r\n    \"stl_id\": 1,\r\n    \"metadato_id\": 1,\r\n    \"valor\": \"Imperio\"\r\n}"
+      },
+      {
+        "name": "eliminarStlMeta",
+        "method": "DELETE",
+        "url": "{{url}}?controlador=stlMeta&metodo=eliminar",
+        "body": "{\r\n    \"id\": 2\r\n}"
+      }
+    ]
+  }
+]

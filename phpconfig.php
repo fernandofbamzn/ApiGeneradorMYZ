@@ -1,0 +1,4 @@
+{
+  "name": "ApiArchivosSTL",
+  "files": ["**/*.php"]
+}
