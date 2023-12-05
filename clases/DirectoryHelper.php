@@ -1,7 +1,7 @@
 <?php
 class DirectoryHelper
 {
-    const dir = '/volume1/StarWarsLegion';
+    const dir = '/volume1/home/MutantYearZero';
     public function getFiles($allowed_extensions = [], $path = null)
 {
     if ($path === null) {
@@ -36,49 +36,4 @@ class DirectoryHelper
     closedir($dir);
     return $files;
 }
-
-
-
-public function getImages($path = null)
-{
-    if ($path === null) {
-        $path = $this::dir;
-    }
-
-    $imageList = [];
-    $dir = @opendir($path);
-
-    if ($dir === false) {
-        return $imageList;
-    }
-
-    while (($entry = readdir($dir)) !== false) {
-        if ($entry == '.' || $entry == '..') {
-            continue;
-        }
-
-        $fullPath = $path . DIRECTORY_SEPARATOR . $entry;
-
-        if (is_dir($fullPath)) {
-            $imageList = array_merge($imageList, $this->getImages($fullPath));
-        } else {
-            if ($this->isImage($fullPath)) {
-                $imageList[] = str_replace(DirectoryHelper::dir,'',$fullPath);
-            }
-        }
-    }
-
-    closedir($dir);
-    return $imageList;
-}
-
-
-
-    public function isImage($file)
-    {
-        $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-        $fileInfo = pathinfo($file);
-
-        return isset($fileInfo['extension']) && in_array(strtolower($fileInfo['extension']), $imageExtensions);
-    }
 }

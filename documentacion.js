@@ -6,7 +6,7 @@ function displayEndpoints(categories) {
                 <h2 class="category-header">${category.category}</h2>
                 <div class="category-content">
         `;
-        const apiUrl = 'https://fernandofbamzn.duckdns.org/ApiBibliotecaSTL/api.php';
+        const apiUrl = 'https://fernandofbamzn.duckdns.org/ApiGeneradorMYZ/api.php';
         for (const endpoint of category.endpoints) {
             output += `
                 <div class="endpoint">

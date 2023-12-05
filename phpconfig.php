@@ -1,4 +1,4 @@
 {
-  "name": "ApiArchivosSTL",
+  "name": "ApiGeneradorMYZ",
   "files": ["**/*.php"]
 }

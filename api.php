@@ -75,6 +75,10 @@ switch ($controlador) {
         $usuariosController = new UsuariosController();
         $result = $usuariosController->routeRequest($mysqli, $data);
         break;
+    case 'personajes':
+        $personajesController = new PersonajesController();
+        $result = $personajesController->routeRequest($mysqli, $data);
+        break;
     case 'archivos':
         $archivosController = new ArchivosController();
         $result = $archivosController->routeRequest($mysqli, $data);
