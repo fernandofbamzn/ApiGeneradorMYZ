@@ -71,10 +71,6 @@ if ($controlador != 'autentificar') { //Comprobamos que el token sea valido.
 }
 
 switch ($controlador) {
-    case 'usuario':
-        $usuariosController = new UsuariosController();
-        $result = $usuariosController->routeRequest($mysqli, $data);
-        break;
     case 'personajes':
         $personajesController = new PersonajesController();
         $result = $personajesController->routeRequest($mysqli, $data);
