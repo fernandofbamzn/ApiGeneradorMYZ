@@ -75,22 +75,12 @@ switch ($controlador) {
         $personajesController = new PersonajesController();
         $result = $personajesController->routeRequest($mysqli, $data);
         break;
-    case 'archivos':
-        $archivosController = new ArchivosController();
-        $result = $archivosController->routeRequest($mysqli, $data);
+    case 'normas':
+        $normasController = new NormasController();
+        $result = $normasController->routeRequest($mysqli, $data);
         break;
-    case 'imagenes':
-        $imagenesController = new ImagenesController();
-        $result = $imagenesController->routeRequest($mysqli, $data);
-        break;
-    case 'metadatos':
-        $metadatosController = new MetadatosController();
-        $result = $metadatosController->routeRequest($mysqli, $data);
-        break;
-    case 'stlMeta':
-        $stlMetadatosController = new StlMetadatosController();
-        $result = $stlMetadatosController->routeRequest($mysqli, $data);
-        break;
+
+   
     default:
         echo json_encode(['error' => 'Controlador no encontrado'], JSON_UNESCAPED_UNICODE);
         break;
