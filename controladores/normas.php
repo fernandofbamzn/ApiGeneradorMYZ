@@ -19,6 +19,15 @@ class NormasController
     LEFT JOIN HabilidadUtilidadProeza ON HabilidadUtilidad.id_habilidad_utilidad = HabilidadUtilidadProeza.id_habilidad_utilidad
     INNER JOIN Caracteristica ON Habilidad.id_caracteristica = Caracteristica.id_caracteristica";
     const SQL_GET_HERIDAS_CRITICAS = "SELECT * FROM HeridaCritica";
+    const SQL_GET_PIFIAS_PM = "SELECT id_pifia_pm, d6, efecto FROM PifiaPM";
+    const SQL_GET_PRECIOS = "SELECT id, Objeto, Precio, Requisito, Peso, Bonus, Daño, Alcance, Comentario FROM Precios";
+    const SQL_GET_RELACIONES_TIPO= "SELECT id_relacion, tipo_relacion FROM Relacion";
+    const SQL_GET_ROL = "SELECT R.id_rol, R.nombre_rol, C.id_caracteristica, C.caracteristica,  H.id_habilidad, H.habilidad, C.descripcion FROM Rol R
+    INNER JOIN Caracteristica C ON R.id_caracteristica = C.id_caracteristica 
+    INNER JOIN Habilidad H ON R.id_habilidad = H.id_habilidad";
+    const SQL_GET_TRAUMA = "SELECT T.id_trauma, T.trauma, C.id_caracteristica, C.caracteristica FROM Trauma T 
+    INNER JOIN Caracteristica C ON T.id_caracteristica = C.id_caracteristica";
+    const SQL_GET_VEHICULO = "SELECT V.id_vehiculo, V.vehiculo, V.bonus, V.armadura, V.resistencia, V.ocupantes FROM Vehiculo V";
     // ... otras consultas SQL como INSERT, UPDATE, DELETE
 
     public function routeRequest($mysqli, $data)
@@ -231,10 +240,79 @@ class NormasController
                     if ($this->MostrarEchosErrores)
                         echo json_encode(['error' => 'Método incorrecto'], JSON_UNESCAPED_UNICODE);
                 }
-
+            case 'getPifiaPMAll':
+                if ($method == 'GET') {
+                    self::getAll($mysqli, self::SQL_GET_PIFIAS_PM);
+                } else {
+                    if ($this->MostrarEchosErrores)
+                        echo json_encode(['error' => MetodoIncorrecto], JSON_UNESCAPED_UNICODE);
+                }
+                break;
+            case 'getPifiaPM':
+                if ($method == 'GET') {
+                    $id = $_GET['id'];
+                    $nom = $_GET['nom'];
+                    if (isset($id) || isset($nom)) {
+                        self::getOne($mysqli, $id, $nom, self::SQL_GET_PIFIAS_PM, 'id_pifia_pm', 'efecto');
+                    } else {
+                        if ($this->MostrarEchosErrores)
+                            echo json_encode(['error' => 'Falta el parámetro id']);
+                    }
+                } else {
+                    if ($this->MostrarEchosErrores)
+                        echo json_encode(['error' => 'Método incorrecto'], JSON_UNESCAPED_UNICODE);
+                }
+                break;
+            case 'getPrecioAll':
+                if ($method == 'GET') {
+                    self::getAll($mysqli, self::SQL_GET_PRECIOS);
+                } else {
+                    if ($this->MostrarEchosErrores)
+                        echo json_encode(['error' => MetodoIncorrecto], JSON_UNESCAPED_UNICODE);
+                    return false;
+                }
+                break;
+            case 'getPrecio':
+                if ($method == 'GET') {
+                    $id = $_GET['id'];
+                    $nom = $_GET['nom'];                   
+                    if (isset($id) || isset($nom)) {
+                        self::getOne($mysqli, $id, $nom, self::SQL_GET_PRECIOS, 'id', 'objeto');
+                    } else {
+                        if ($this->MostrarEchosErrores)
+                            echo json_encode(['error' => 'Falta el parámetro id o nom']);
+                    }
+                } else {
+                    if ($this->MostrarEchosErrores)
+                        echo json_encode(['error' => 'Método incorrecto']);
+                }
+                break;
+            case 'getRelacionTipoAll':
+                if ($method == 'GET') {
+                    self::getAll($mysqli, self::SQL_GET_RELACIONES_TIPO);
+                } else {
+                    if ($this->MostrarEchosErrores)
+                        echo json_encode(['error' => MetodoIncorrecto]);
+                    return false;
+                }
+                break;
+            case 'getRelacionTipo':
+                if ($method == 'GET') {
+                    $id = $_GET['id'];
+                    $nom = $_GET['nom'];                   
+                    if (isset($id) || isset($nom)) {
+                        self::getOne($mysqli, $id, $nom, self::SQL_GET_RELACIONES_TIPO, 'id_relacion', 'tipo_relacion');
+                    } else {
+                        if ($this->MostrarEchosErrores)
+                            echo json_encode(['error' => 'Falta el parámetro id o nom']);
+                    }
+                } else {
+                    if ($this->MostrarEchosErrores)
+                        echo json_encode(['error' => 'Método incorrecto']);
+                }
                 break;
             case 'crear':
-
+            
                 break;
             case 'editar':
 
@@ -360,4 +438,5 @@ class NormasController
         }
         return $habilidades;
     }
+   
 }
